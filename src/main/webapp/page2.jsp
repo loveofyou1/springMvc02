@@ -24,6 +24,27 @@
     <div id="div2" onmouseover="mOver(this)" onmouseout="mOut(this)" style="background-color: coral">
         Mouse Over Me
     </div>
+    <div>
+        <a name="html">HTML </a>
+        <a name="css">css </a>
+        <a name="xml">xml </a>
+        <a href="/jsp/showName.jsp#maoDian">javascript </a>
+        <p>锚点的数量：
+            <script>
+                document.write(document.anchors.length);
+            </script>
+        </p>
+
+        <a href="/redictNewPage">页面跳转mvc</a>
+
+        <img border="0" src="WEB-INF/img/1.jpg" width="20" height="20">
+        <img border="0" src="WEB-INF/img/2.jpg" width="20" height="20">
+        <p>图片数量：
+            <script>
+                document.write(document.images.length);
+            </script>
+        </p>
+    </div>
 </div>
 
 <script>

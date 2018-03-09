@@ -9,6 +9,7 @@ import sun.service.IUserService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author sunlei19
@@ -32,5 +33,10 @@ public class UserController {
         }
         request.setAttribute("error", "没有找到该用户!");
         return "error";
+    }
+
+    @RequestMapping(value = "redictNewPage")
+    public String redictNewPage(HttpServletRequest request, HttpServletResponse response) {
+        return "showName";
     }
 }

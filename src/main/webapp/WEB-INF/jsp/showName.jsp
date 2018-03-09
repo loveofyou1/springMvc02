@@ -13,8 +13,10 @@
     <title>show name</title>
 </head>
 <body>
-<h1>Welcome</h1> ${name }
+<h1>Welcome</h1>
+<h2>姓名：${name }</h2>
 <h2>年龄：${age}</h2>
 <h1>访问此页面</h1>
+<a name="maoDian">锚点测试</a>
 </body>
 </html>
