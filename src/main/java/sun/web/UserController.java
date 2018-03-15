@@ -22,13 +22,14 @@ public class UserController {
     private IUserService userService;
 
 
-    @RequestMapping(value = "/showUserName", method = RequestMethod.GET)
+    @RequestMapping(value = "/showUserName", method = RequestMethod.GET, headers = {})
     public String showUserName(int uid, HttpServletRequest request, Model model) {
         System.out.println("showname");
         UserVO userVO = userService.queryUserInfoById(uid);
         if (userVO != null) {
             request.setAttribute("name", userVO.getUserName());
             model.addAttribute("name", userVO.getUserName());
+            model.addAttribute("age", userVO.getAge());
             return "showName";
         }
         request.setAttribute("error", "没有找到该用户!");
@@ -36,7 +37,15 @@ public class UserController {
     }
 
     @RequestMapping(value = "redictNewPage")
-    public String redictNewPage(HttpServletRequest request, HttpServletResponse response) {
-        return "showName";
+    public String redictNewPage(HttpServletRequest request, Model model) {
+        System.out.println(request.getCookies() + request.getContentType() + ":" + request.getCharacterEncoding());
+        UserVO userVO = userService.queryUserInfoById(2);
+        if (userVO != null) {
+            model.addAttribute("name", userVO.getUserName());
+            model.addAttribute("age", userVO.getAge());
+            return "showName";
+        }
+        request.setAttribute("error", "没有找到该用户!");
+        return "error";
     }
 }
