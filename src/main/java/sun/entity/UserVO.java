@@ -14,6 +14,17 @@ public class UserVO {
 
     private int age;
 
+    private ContractInfo contractInfo;
+
+    public ContractInfo getContractInfo() {
+
+        return contractInfo;
+    }
+
+    public void setContractInfo(ContractInfo contractInfo) {
+        this.contractInfo = contractInfo;
+    }
+
     public int getId() {
         return id;
     }
@@ -44,5 +55,16 @@ public class UserVO {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "UserVO{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", age=" + age +
+                ", contractInfo=" + contractInfo +
+                '}';
     }
 }
