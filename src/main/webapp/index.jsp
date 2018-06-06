@@ -14,6 +14,9 @@
             <td width="80">
                 <button id="page2"><a href="/page2.jsp">页面二</a></button>
             </td>
+            <td>
+                <button id="page3"><a href="page3.jsp">页面三</a></button>
+            </td>
         </tr>
     </table>
 </form>
