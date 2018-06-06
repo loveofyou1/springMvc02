@@ -1,11 +1,16 @@
 package sun.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import sun.entity.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * @author sunlei19
@@ -138,5 +143,15 @@ public class Testcontroller1 {
     public String normal(HttpServletRequest request) {
         String hello = request.getParameter("hello");
         return hello;
+    }
+
+    @RequestMapping(value = "/submitFile.do", method = RequestMethod.POST)
+    public String submitFile(@RequestParam(value = "file") MultipartFile file) throws IOException {
+        if (!file.isEmpty()) {
+            FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(new File("c:\\", System.currentTimeMillis
+                    () + file.getOriginalFilename())));
+
+        }
+        return "success";
     }
 }
