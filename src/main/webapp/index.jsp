@@ -6,30 +6,27 @@
 <body>
 <form>
     <h2>Hello World!</h2>
-    <table border="1">
-        <tr>
-            <td width="80">
+    <div>
+        <div>
+            <div width="80">
                 <button id="page1" onclick="alertMsg()"><a href="/page1.jsp">页面一</a></button>
-            </td>
-            <td width="80">
+            </div>
+            <div width="80">
                 <button id="page2"><a href="/page2.jsp">页面二</a></button>
-            </td>
-            <td width="80">
-                <button id="page3"><a href="/page3.jsp">页面三</a></button>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+        <div>
+            <div width="80">
+                <button id="page3" type="button" value="页面三" onclick="topage3()">页面三</button>
+            </div>
+        </div>
+    </div>
 </form>
 </body>
 </html>
 <script src="/js/indexJs.js"></script>
-<script>
-    $(function () {
-        $("#page1").click(function () {
-            alertMsg();
-        });
-    });
-
-    function alertMsg() {
+<script type="text/javascript">
+    function topage3() {
+        window.location.href="page3.jsp";
     }
 </script>
