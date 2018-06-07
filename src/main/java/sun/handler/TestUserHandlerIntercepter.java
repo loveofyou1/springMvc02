@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * @create 2018-03-14 20:40
  */
 public class TestUserHandlerIntercepter extends HandlerInterceptorAdapter {
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
             Exception {

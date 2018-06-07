@@ -20,6 +20,11 @@
                 <button id="page3" type="button" value="页面三" onclick="topage3()">页面三</button>
             </div>
         </div>
+        <div>
+            <div width="80">
+                <button id="page4" type="button" value="页面四" onclick="jsonPage4()">页面四</button>
+            </div>
+        </div>
     </div>
 </form>
 </body>
@@ -27,6 +32,10 @@
 <script src="/js/indexJs.js"></script>
 <script type="text/javascript">
     function topage3() {
-        window.location.href="page3.jsp";
+        window.location.href="/page3.do";
+    }
+
+    function jsonPage4() {
+        window.location.href="/page4.do";
     }
 </script>

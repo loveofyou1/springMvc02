@@ -1,13 +1,17 @@
 package sun.web;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import sun.entity.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -148,10 +152,36 @@ public class Testcontroller1 {
     @RequestMapping(value = "/submitFile.do", method = RequestMethod.POST)
     public String submitFile(@RequestParam(value = "file") MultipartFile file) throws IOException {
         if (!file.isEmpty()) {
-            FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(new File("c:\\", System.currentTimeMillis
+            FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(new File("d:\\", System.currentTimeMillis
                     () + file.getOriginalFilename())));
 
         }
         return "success";
+    }
+
+    @RequestMapping(value = "/page3.do")
+    public String page3(HttpServletRequest request, HttpServletResponse response) {
+        return "page3";
+    }
+
+    @RequestMapping(value = "/page4.do")
+    public String page4() {
+        return "JsonPage4";
+    }
+
+    @RequestMapping(value = "/showJson.do")
+    @ResponseBody
+    public String showJson(HttpServletRequest request,HttpServletResponse response, ModelMap model) {
+        UserVO userVO = new UserVO();
+        userVO.setId(1);
+        userVO.setAge(20);
+        userVO.setUserName("sunlei");
+        userVO.setPassword("jd618");
+        ContractInfo contractInfo = new ContractInfo();
+        contractInfo.setAddress("科创十一街18号院");
+        contractInfo.setPhone("123456778901");
+        userVO.setContractInfo(contractInfo);
+        model.addAttribute("jsonText", JSON.toJSONString(userVO));
+        return JSON.toJSONString(userVO);
     }
 }

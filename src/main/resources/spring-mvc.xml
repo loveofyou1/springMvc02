@@ -70,4 +70,11 @@
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="resolveLazily" value="true"/>
     </bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="sun.intecepter.MyInteceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
