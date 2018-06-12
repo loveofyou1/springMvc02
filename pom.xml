@@ -115,6 +115,16 @@
 
     <build>
         <finalName>springMvc02</finalName>
+        <!-- <resources>
+             <resource>
+                 <directory>src/main/resources/${buildEnv}</directory>
+                 去除指定路径中的文件
+                 <excludes>
+                     <exclude>dev/*</exclude>
+                     <exclude>pre/*</exclude>
+                 </excludes>
+            </resource>
+        </resources>-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -126,5 +136,24 @@
                 </configuration>
             </plugin>
         </plugins>
+
     </build>
+
+    <!-- <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <buildEnv>dev</buildEnv>
+            </properties>
+        </profile>
+        <profile>
+            <id>pre</id>
+            <properties>
+                <buildEnv>pre</buildEnv>
+            </properties>
+        </profile>
+    </profiles>-->
 </project>
