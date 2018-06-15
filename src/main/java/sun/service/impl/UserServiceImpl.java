@@ -24,7 +24,7 @@ public class UserServiceImpl implements IUserService {
         if (userVO != null) {
             UserVO tempVo = uMapper.queryUserByName(userVO.getUserName());
             if (tempVo != null && tempVo.getUserName().equals(userVO.getUserName())) {
-                return "该用户已存在";
+                return "user had existed!";
             } else {
                 uMapper.save(userVO);
                 return "showName";

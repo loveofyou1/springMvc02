@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import sun.entity.UserVO;
 import sun.service.IUserService;
@@ -25,6 +26,7 @@ public class Page1Controller {
     private IUserService userService;
 
     @RequestMapping(value = "/testAction", method = RequestMethod.GET)
+    @ResponseBody
     public String testAction(String userName, int age, String password, HttpServletRequest request, Model model) {
         UserVO userVO = new UserVO();
         //userVO.setId(2);

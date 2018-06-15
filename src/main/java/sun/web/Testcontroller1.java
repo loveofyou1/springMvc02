@@ -1,6 +1,7 @@
 package sun.web;
 
 import com.alibaba.fastjson.JSON;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
@@ -171,7 +172,7 @@ public class Testcontroller1 {
 
     @RequestMapping(value = "/showJson.do")
     @ResponseBody
-    public String showJson(HttpServletRequest request,HttpServletResponse response, ModelMap model) {
+    public String showJson(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
         UserVO userVO = new UserVO();
         userVO.setId(1);
         userVO.setAge(20);
