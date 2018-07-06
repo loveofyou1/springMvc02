@@ -20,4 +20,13 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
     <bean id="userService" class="sun.service.impl.UserServiceImpl"></bean>
 
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="5"/>
+        <property name="maxPoolSize" value="10"/>
+        <property name="queueCapacity" value="25"/>
+    </bean>
+
+    <bean id="taskExecutorExample" class="test.springTask.TaskExecutorExample">
+        <constructor-arg ref="taskExecutor"/>
+    </bean>
 </beans>
