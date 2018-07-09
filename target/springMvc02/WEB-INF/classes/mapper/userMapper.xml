@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sun.dao.UserMapper">
+    <select id="queryUserByName" resultMap="userInfoResultMap">
+        SELECT * FROM user_t where user_name = #{userName}
+    </select>
+
+    <resultMap id="userInfoResultMap" type="sun.entity.UserVO">
+        <!--
+            id:标签 查询结果集唯一的标识
+            column：sql查询字段名（列名）
+            property：pojo对应属性名
+
+        -->
+        <id column="id" property="id"></id>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="age" property="age"/>
+    </resultMap>
+
+    <select id="queryUserById" resultMap="userInfoResultMap">
+      SELECT * FROM USER_T WHERE id = #{id}
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO  user_t(id,user_name,password,age)
+      VALUES (#{id},#{userName},#{password},#{age})
+    </insert>
+</mapper>

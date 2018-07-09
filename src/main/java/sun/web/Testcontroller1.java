@@ -1,15 +1,15 @@
 package sun.web;
 
 import com.alibaba.fastjson.JSON;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 import sun.entity.*;
 import sun.test.aop.Performance;
 
@@ -25,6 +25,8 @@ import java.io.IOException;
  */
 @Controller
 public class Testcontroller1 {
+
+    private static final Logger logger = LogManager.getLogger(Logger.class);
 
     @Autowired(required = false)
     private Performance performance;
@@ -158,8 +160,14 @@ public class Testcontroller1 {
     @RequestMapping(value = "/submitFile.do", method = RequestMethod.POST)
     public String submitFile(@RequestParam(value = "file") MultipartFile file) throws IOException {
         if (!file.isEmpty()) {
-            FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(new File("d:\\", System.currentTimeMillis
-                    () + file.getOriginalFilename())));
+            logger.error(System.getProperty("os.name"));
+            String osPro = System.getProperty("os.name");
+            if (osPro != null && osPro.startsWith("Mac")){
+                file.transferTo(new File("/user/local" + file.getOriginalFilename()));
+            }else {
+                FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(new File("d:\\", System.currentTimeMillis
+                        () + file.getOriginalFilename())));
+            }
 
         }
         return "success";
