@@ -16,7 +16,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
 
     <import resource="classpath:spring-mybatis.xml"/>
-<!--    <import resource="classpath:conf/spring-aop.xml"/>-->
+    <import resource="classpath:conf/spring-aop-test.xml"/>
 
     <bean id="userService" class="sun.service.impl.UserServiceImpl"></bean>
 

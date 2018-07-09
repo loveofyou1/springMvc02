@@ -10,7 +10,7 @@
         </aop:aspect>
     </aop:config>
 
-    <bean id="aspect" class="sun.test.aop.Aspect"/>
+    <bean id="aspect" class="sun.test.aop.aspect.Aspect"/>
     <bean id="test" class="sun.test.aop.Test"/>
 
 
@@ -28,4 +28,6 @@
     <bean id="greetingImpl" class="test.GreetingImpl"/>
 
     <bean id="greetingAroundAdvice" class="test.aopProxy.GreetingAroundAdvice"/>
+
+
 </beans>

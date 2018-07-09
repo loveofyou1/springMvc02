@@ -1,6 +1,7 @@
 package sun.web;
 
 import com.alibaba.fastjson.JSON;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import sun.entity.*;
+import sun.test.aop.Performance;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +25,9 @@ import java.io.IOException;
  */
 @Controller
 public class Testcontroller1 {
+
+    @Autowired(required = false)
+    private Performance performance;
 
     /**
      * http://localhost:8080/baseType.do?xage=
@@ -184,5 +189,17 @@ public class Testcontroller1 {
         userVO.setContractInfo(contractInfo);
         model.addAttribute("jsonText", JSON.toJSONString(userVO));
         return JSON.toJSONString(userVO);
+    }
+
+    @RequestMapping(value = "/page5.do")
+    public String page5() {
+        return "page5";
+    }
+
+    @RequestMapping(value = "/page5Query.do")
+    @ResponseBody
+    public String page5Query() {
+        performance.perform();
+        return "success";
     }
 }

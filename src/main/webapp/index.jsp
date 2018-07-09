@@ -25,6 +25,11 @@
                 <button id="page4" type="button" value="页面四" onclick="jsonPage4()">页面四</button>
             </div>
         </div>
+        <div>
+            <div width="80">
+                <button id="page5" type="button" value="页面五" onclick="topage5()">页面五</button>
+            </div>
+        </div>
     </div>
 </form>
 </body>
@@ -37,5 +42,9 @@
 
     function jsonPage4() {
         window.location.href="/page4.do";
+    }
+
+    function topage5() {
+        window.location.href = "/page5.do";
     }
 </script>
