@@ -2,14 +2,12 @@ package sun.web;
 
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 import sun.entity.*;
 import sun.test.aop.Performance;
 
@@ -199,7 +197,7 @@ public class Testcontroller1 {
     @RequestMapping(value = "/page5Query.do")
     @ResponseBody
     public String page5Query() {
-        performance.perform();
-        return "success";
+        String userInfo = performance.perform();
+        return userInfo;
     }
 }

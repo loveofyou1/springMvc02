@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+<!--
     <aop:config>
         <aop:aspect id="TestAspect" ref="aspect">
             <aop:pointcut id="pointcut" expression="execution(* sun.test.aop.*.*(..))"/>
@@ -12,6 +13,7 @@
 
     <bean id="aspect" class="sun.test.aop.aspect.Aspect"/>
     <bean id="test" class="sun.test.aop.Test"/>
+-->
 
 
     <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">

@@ -7,6 +7,11 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.annotation.Aspect;
 
+/**
+ * 观众切面类
+ *
+ * @author sunlei19
+ */
 @Aspect
 public class Audience {
 
@@ -38,14 +43,14 @@ public class Audience {
     public void demandRefund() {
         logger.error("audience demand refund.");
     }
-
+/*
     @Around("performance()")
-    public void watchPerformance(ProceedingJoinPoint joinPoint ) {
-        try{
+    public void watchPerformance(ProceedingJoinPoint joinPoint) {
+        try {
             logger.error(" audience watchPerformance");
             joinPoint.proceed();
         } catch (Throwable throwable) {
-           logger.error("demand refund：{}",JSON.toJSONString(throwable));
+            logger.error("demand refund：{}", JSON.toJSONString(throwable));
         }
-    }
+    }*/
 }

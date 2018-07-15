@@ -9,6 +9,9 @@ import sun.entity.UserVO;
 import sun.service.IUserService;
 import sun.test.aop.Performance;
 
+/**
+ * @author sunlei19
+ */
 @Service("performance")
 public class PerformanceImpl implements Performance {
 
@@ -18,10 +21,11 @@ public class PerformanceImpl implements Performance {
     private IUserService userService;
 
     @Override
-    public void perform() {
+    public String perform() {
         performLog.error("sammy perform superman. ");
         UserVO userVO = userService.queryUserInfoById(1);
-        performLog.error("用户信息:{}" , JSON.toJSONString(userVO));
+        performLog.error("用户信息:{}", JSON.toJSONString(userVO));
         performLog.error("sammy perform is end.");
+        return JSON.toJSONString(userVO);
     }
 }
