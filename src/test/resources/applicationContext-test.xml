@@ -29,4 +29,8 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <bean id="taskExecutorExample" class="test.springTask.TaskExecutorExample">
         <constructor-arg ref="taskExecutor"/>
     </bean>
+
+    <bean id="perform" class="sun.test.aop.impl.PerformanceImpl"></bean>
+
+    <bean id="iAspectService" class="sun.test.aop.impl.IAspectServiceImpl"/>
 </beans>
