@@ -15,4 +15,7 @@ public interface Performance {
      * @return str
      */
     String perform();
+
+
+    String doAround(String id);
 }
