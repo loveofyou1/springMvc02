@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author sunlei19
@@ -162,9 +164,9 @@ public class Testcontroller1 {
         if (!file.isEmpty()) {
             logger.error(System.getProperty("os.name"));
             String osPro = System.getProperty("os.name");
-            if (osPro != null && osPro.startsWith("Mac")){
+            if (osPro != null && osPro.startsWith("Mac")) {
                 file.transferTo(new File("/user/local" + file.getOriginalFilename()));
-            }else {
+            } else {
                 FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(new File("d:\\", System.currentTimeMillis
                         () + file.getOriginalFilename())));
             }
@@ -204,10 +206,37 @@ public class Testcontroller1 {
         return "page5";
     }
 
+    @RequestMapping(value = "/page6.do")
+    public String page6() {
+        return "list1";
+    }
+
     @RequestMapping(value = "/page5Query.do")
     @ResponseBody
     public String page5Query() {
         String userInfo = performance.perform();
         return userInfo;
     }
+
+
+    @RequestMapping("/list")
+    @ResponseBody
+    public String list(HttpServletRequest request) {
+        List<ListEntity> listEntities = new ArrayList<>();
+        ListEntity entity1 = new ListEntity();
+        entity1.setId(1);
+        entity1.setName("sun");
+        entity1.setSex("male");
+        listEntities.add(entity1);
+
+        ListEntity entity2 = new ListEntity();
+        entity2.setId(1);
+        entity2.setName("sun");
+        entity2.setSex("male");
+        listEntities.add(entity2);
+
+        return JSON.toJSONString(listEntities);
+    }
+
+
 }

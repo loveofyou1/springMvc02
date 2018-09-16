@@ -30,6 +30,11 @@
                 <button id="page5" type="button" value="页面五" onclick="topage5()">页面五</button>
             </div>
         </div>
+        <div>
+            <div width="80">
+                <button id="page6" type="button" value="页面六" onclick="topage6()">页面六</button>
+            </div>
+        </div>
     </div>
 </form>
 </body>
@@ -46,5 +51,9 @@
 
     function topage5() {
         window.location.href = "/page5.do";
+    }
+
+    function topage6(){
+        window.location.href = "/page6.do";
     }
 </script>

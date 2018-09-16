@@ -19,6 +19,7 @@
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/web/UserController.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/service/IUserServiceTest.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/test/GreetingImpl.java
+/Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/test/aop/IAspectService.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/entity/UserListForm.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/test/redis/RedisPool.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/test/xml/Client.java
@@ -31,13 +32,16 @@
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/test/CGLibDynamicProxy.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/web/Testcontroller1.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/test/aop/impl/PerformanceImpl.java
+/Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/test/aop/impl/IAspectServiceImpl.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/test/aop/aspect/Audience.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/service/impl/IUserServiceImplTwo.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/service/IUserServiceTest2.java
+/Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/test/normal/lambda/TestLambda.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/test/normal/TestSet.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/controller/page/Page1Controller.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/test/aop/Test.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/test/DynamicProxy.java
+/Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/test/aop/aspect/TestAspectJForAspect.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/service/IUserService.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/test/aopProxy/GreetingAroundAdvice.java
 /Users/sunlei/java/projects/springmvc/springMvc02/src/main/java/sun/entity/UserSetForm.java
