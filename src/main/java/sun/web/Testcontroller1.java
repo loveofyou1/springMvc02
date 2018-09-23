@@ -1,6 +1,8 @@
 package sun.web;
 
 import com.alibaba.fastjson.JSON;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author sunlei19
@@ -23,6 +27,8 @@ import java.io.IOException;
  */
 @Controller
 public class Testcontroller1 {
+
+    private static final Logger logger = LogManager.getLogger(Logger.class);
 
     @Autowired(required = false)
     private Performance performance;
@@ -156,8 +162,14 @@ public class Testcontroller1 {
     @RequestMapping(value = "/submitFile.do", method = RequestMethod.POST)
     public String submitFile(@RequestParam(value = "file") MultipartFile file) throws IOException {
         if (!file.isEmpty()) {
-            FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(new File("d:\\", System.currentTimeMillis
-                    () + file.getOriginalFilename())));
+            logger.error(System.getProperty("os.name"));
+            String osPro = System.getProperty("os.name");
+            if (osPro != null && osPro.startsWith("Mac")) {
+                file.transferTo(new File("/user/local" + file.getOriginalFilename()));
+            } else {
+                FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(new File("d:\\", System.currentTimeMillis
+                        () + file.getOriginalFilename())));
+            }
 
         }
         return "success";
@@ -194,10 +206,37 @@ public class Testcontroller1 {
         return "page5";
     }
 
+    @RequestMapping(value = "/page6.do")
+    public String page6() {
+        return "list1";
+    }
+
     @RequestMapping(value = "/page5Query.do")
     @ResponseBody
     public String page5Query() {
         String userInfo = performance.perform();
         return userInfo;
     }
+
+
+    @RequestMapping("/list")
+    @ResponseBody
+    public String list(HttpServletRequest request) {
+        List<ListEntity> listEntities = new ArrayList<>();
+        ListEntity entity1 = new ListEntity();
+        entity1.setId(1);
+        entity1.setName("sun");
+        entity1.setSex("male");
+        listEntities.add(entity1);
+
+        ListEntity entity2 = new ListEntity();
+        entity2.setId(1);
+        entity2.setName("sun");
+        entity2.setSex("male");
+        listEntities.add(entity2);
+
+        return JSON.toJSONString(listEntities);
+    }
+
+
 }

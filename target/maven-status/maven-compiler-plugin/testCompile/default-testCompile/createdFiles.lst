@@ -1,0 +1,9 @@
+sun/resource/TestResource.class
+sun/common/file/FileMonitorTest$1.class
+sun/common/file/FileMonitorTest.class
+sun/service/impl/UserServiceImplTest.class
+redis/TestRedis.class
+sun/test/aop/impl/IAspectServiceImplTest.class
+sun/common/file/TestIOUtils.class
+task/TestSpringTask.class
+sun/test/aop/impl/PerformanceImplTest.class

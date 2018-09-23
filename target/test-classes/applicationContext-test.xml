@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    <!-- 1.配置jdbc文件 -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:jdbc.properties"/>
+    </bean>
+
+    <context:component-scan base-package="sun.dao">
+    </context:component-scan>
+    <context:component-scan base-package="test"/>
+
+
+
+    <import resource="classpath:spring-mybatis.xml"/>
+    <import resource="classpath:conf/spring-aop-test.xml"/>
+
+    <bean id="userService" class="sun.service.impl.UserServiceImpl"></bean>
+
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="5"/>
+        <property name="maxPoolSize" value="10"/>
+        <property name="queueCapacity" value="25"/>
+    </bean>
+
+    <bean id="taskExecutorExample" class="test.springTask.TaskExecutorExample">
+        <constructor-arg ref="taskExecutor"/>
+    </bean>
+
+    <bean id="perform" class="sun.test.aop.impl.PerformanceImpl"></bean>
+
+    <bean id="iAspectService" class="sun.test.aop.impl.IAspectServiceImpl"/>
+</beans>
