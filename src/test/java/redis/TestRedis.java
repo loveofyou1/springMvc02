@@ -48,11 +48,11 @@ public class TestRedis {
         redisLog.info("设置多个键值对后：{}", jedis.mget("2", "3", "4", "age"));
     }
 
-    //@Test
+    @Test
     public void testMap() {
         //添加数据
         Map<String, String> map = new HashMap<>();
-        map.put("name", "suneli");
+        map.put("name", "sunlei");
         map.put("age", "20");
         map.put("email", "sunlei19@jd.com");
         map.put("address", "hebei");
