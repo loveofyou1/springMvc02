@@ -39,6 +39,7 @@ sun/test/aop/Encoreable.class
 sun/test/aop/Test.class
 sun/entity/ContractInfo.class
 test/DynamicProxy.class
+sun/entity/ListEntity.class
 test/redis/RedisPool.class
 sun/test/aop/aspect/Audience.class
 test/Client.class
