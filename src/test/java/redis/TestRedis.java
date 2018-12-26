@@ -28,7 +28,7 @@ public class TestRedis {
     }
 
 
-    //@Test
+    @Test
     public void testString() {
         //设置字符串
         jedis.set("1", "one");
@@ -66,7 +66,7 @@ public class TestRedis {
     /**
      * jedis操作List
      */
-    //@Test
+    @Test
     public void testList() {
         //移除javaFramwork所所有内容
         jedis.del("javaFramwork");
@@ -88,7 +88,7 @@ public class TestRedis {
     /**
      * jedis操作Set
      */
-    //@Test
+    @Test
     public void testSet() {
         //添加
 /*        jedis.sadd("user", "chenhaoxiang");
@@ -108,7 +108,7 @@ public class TestRedis {
     /**
      * 排序
      */
-    //@Test
+    @Test
     public void test() {
         jedis.del("number");//先删除数据，再进行测试
         jedis.rpush("number", "4");//将一个或多个值插入到列表的尾部(最右边)
@@ -124,5 +124,4 @@ public class TestRedis {
         jedis.del("number");//测试完删除数据
         redisLog.info(jedis.llen("number"));
     }
-
 }
