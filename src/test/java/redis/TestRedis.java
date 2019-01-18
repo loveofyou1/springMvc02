@@ -2,14 +2,15 @@ package redis;
 
 
 import com.alibaba.fastjson.JSON;
-import com.google.common.collect.Maps;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
+import test.redis.domain.UserInfo;
+import test.redis.service.RedisService;
+import test.redis.service.RedisServiceImpl;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,9 @@ public class TestRedis {
     private static final Logger redisLog = LogManager.getLogger(TestRedis.class);
 
     private Jedis jedis;
+
+    private RedisService redisService = new RedisServiceImpl();
+    ;
 
     @Before
     public void setJedis() {
@@ -129,25 +133,13 @@ public class TestRedis {
 
     @Test
     public void createUser() {
-        String login = "sunlei_login";
-        String users = "users";
-        if (jedis.exists(login)) {
-            redisLog.info("key has exist");
-        }
-        Long id = jedis.incr(users);
-        if (id <= 0) {
-            id = 1L;
-        }
-        jedis.hset("users:", login, id.toString());
-        Map<String, String> userInfo = Maps.newHashMap();
-        userInfo.put("login", login);
-        userInfo.put("id", String.valueOf(id));
-        userInfo.put("name", "sunlei");
-        userInfo.put("followers", "0");
-        userInfo.put("following", "0");
-        userInfo.put("posts", "0");
-        userInfo.put("signUp", String.valueOf(new Date()));
-        jedis.hmset("users:" + id, userInfo);
-        redisLog.info(jedis.hvals("users:" + id));
+        UserInfo userInfo = new UserInfo();
+        userInfo.setLogin("sunlei_login3");
+        userInfo.setName("sunlei");
+        userInfo.setFollowers("0");
+        userInfo.setFollowing("0");
+        userInfo.setPosts("0");
+        boolean creatFlag = redisService.createUser(jedis, userInfo);
+        redisLog.info(creatFlag);
     }
 }
