@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
+import redis.clients.jedis.DebugParams;
 import redis.clients.jedis.Jedis;
 import test.redis.domain.UserInfo;
 import test.redis.service.RedisService;
@@ -27,7 +28,9 @@ public class TestRedis {
     @Before
     public void setJedis() {
         //连接redis服务器(在这里是连接本地的)
-        jedis = new Jedis("127.0.0.1", 6379);
+        //jedis = new Jedis("127.0.0.1", 6379);
+        jedis = new Jedis("192.168.20.129", 6379);
+        jedis.connect();
         //权限认证
         //jedis.auth("sunlei");
         redisLog.info("连接服务成功");
@@ -141,5 +144,19 @@ public class TestRedis {
         userInfo.setPosts("0");
         boolean creatFlag = redisService.createUser(jedis, userInfo);
         redisLog.info(creatFlag);
+    }
+
+    @Test
+    public void debugObject() {
+        for (int i = 0; i < 500; i++) {
+            jedis.sadd("set-object", String.valueOf(i));
+        }
+        //集合512以下，按照整数集合存储，超过时按照散列表存储
+        redisLog.info(JSON.toJSONString(jedis.debug(DebugParams.OBJECT("set-object"))));
+
+        for (int i = 500; i < 1000; i++) {
+            jedis.sadd("set-object", String.valueOf(i));
+        }
+        redisLog.info(JSON.toJSONString(jedis.debug(DebugParams.OBJECT("set-object"))));
     }
 }
