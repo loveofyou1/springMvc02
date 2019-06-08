@@ -1,13 +1,12 @@
 package sun.service.impl;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import sun.dao.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.dao.UserMapper;
 import sun.entity.UserVO;
 import sun.service.IUserService;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author sunlei19
@@ -42,5 +41,10 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserVO queryUserInfoById(int id) {
         return uMapper.queryUserById(id);
+    }
+
+    @Override
+    public List<UserVO> queryUserLIst(UserVO userVO) {
+        return uMapper.queryUserLIst(userVO);
     }
 }

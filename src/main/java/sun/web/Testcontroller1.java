@@ -214,7 +214,8 @@ public class Testcontroller1 {
     @RequestMapping(value = "/page5Query.do")
     @ResponseBody
     public String page5Query() {
-        String userInfo = performance.perform();
+        String userInfo = performance.queryUserList(null);
+        //performance.perform();
         return userInfo;
     }
 

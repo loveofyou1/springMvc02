@@ -6,7 +6,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
+import redis.clients.jedis.DebugParams;
 import redis.clients.jedis.Jedis;
+import test.redis.domain.UserInfo;
+import test.redis.service.RedisService;
+import test.redis.service.RedisServiceImpl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,17 +22,22 @@ public class TestRedis {
 
     private Jedis jedis;
 
+    private RedisService redisService = new RedisServiceImpl();
+    ;
+
     @Before
     public void setJedis() {
         //连接redis服务器(在这里是连接本地的)
-        jedis = new Jedis("127.0.0.1", 6379);
+        //jedis = new Jedis("127.0.0.1", 6379);
+        jedis = new Jedis("192.168.20.129", 6379);
+        jedis.connect();
         //权限认证
         //jedis.auth("sunlei");
         redisLog.info("连接服务成功");
     }
 
 
-    //@Test
+    @Test
     public void testString() {
         //设置字符串
         jedis.set("1", "one");
@@ -66,7 +75,7 @@ public class TestRedis {
     /**
      * jedis操作List
      */
-    //@Test
+    @Test
     public void testList() {
         //移除javaFramwork所所有内容
         jedis.del("javaFramwork");
@@ -88,7 +97,7 @@ public class TestRedis {
     /**
      * jedis操作Set
      */
-    //@Test
+    @Test
     public void testSet() {
         //添加
 /*        jedis.sadd("user", "chenhaoxiang");
@@ -108,7 +117,7 @@ public class TestRedis {
     /**
      * 排序
      */
-    //@Test
+    @Test
     public void test() {
         jedis.del("number");//先删除数据，再进行测试
         jedis.rpush("number", "4");//将一个或多个值插入到列表的尾部(最右边)
@@ -125,4 +134,29 @@ public class TestRedis {
         redisLog.info(jedis.llen("number"));
     }
 
+    @Test
+    public void createUser() {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setLogin("sunlei_login3");
+        userInfo.setName("sunlei");
+        userInfo.setFollowers("0");
+        userInfo.setFollowing("0");
+        userInfo.setPosts("0");
+        boolean creatFlag = redisService.createUser(jedis, userInfo);
+        redisLog.info(creatFlag);
+    }
+
+    @Test
+    public void debugObject() {
+        for (int i = 0; i < 500; i++) {
+            jedis.sadd("set-object", String.valueOf(i));
+        }
+        //集合512以下，按照整数集合存储，超过时按照散列表存储
+        redisLog.info(JSON.toJSONString(jedis.debug(DebugParams.OBJECT("set-object"))));
+
+        for (int i = 500; i < 1000; i++) {
+            jedis.sadd("set-object", String.valueOf(i));
+        }
+        redisLog.info(JSON.toJSONString(jedis.debug(DebugParams.OBJECT("set-object"))));
+    }
 }

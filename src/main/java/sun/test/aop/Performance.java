@@ -1,5 +1,7 @@
 package sun.test.aop;
 
+import sun.entity.UserVO;
+
 /**
  * 表演接口
  *
@@ -18,4 +20,6 @@ public interface Performance {
 
 
     String doAround(String id);
+
+    String queryUserList(UserVO uservo);
 }

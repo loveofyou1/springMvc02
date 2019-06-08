@@ -26,4 +26,8 @@
       INSERT INTO  user_t(id,user_name,password,age)
       VALUES (#{id},#{userName},#{password},#{age})
     </insert>
+
+    <select id="queryUserLIst" resultMap="userInfoResultMap">
+        select  * from USER_T
+    </select>
 </mapper>

@@ -33,4 +33,8 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <bean id="perform" class="sun.test.aop.impl.PerformanceImpl"></bean>
 
     <bean id="iAspectService" class="sun.test.aop.impl.IAspectServiceImpl"/>
+
+    <bean id="jimClient" class="com.jd.jim.cli.ReloadableJimClientFactoryBean">
+        <property name="jimUrl" value="jim://1803528671997086613/2" />
+    </bean>
 </beans>

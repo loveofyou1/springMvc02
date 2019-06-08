@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author sunlei19
  * @create 2018-03-14 20:57
  */
-public class TestController implements Controller{
+public class TestController implements Controller {
+    @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         System.out.println("test Controller!");
         return new ModelAndView("showName");
